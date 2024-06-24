@@ -25,6 +25,8 @@ export default function TextFrom(props) {
         <button className='btn btn-primary' onClick={clicked}>Convert to upper case</button>
         <br /><br />
         <button className='btn btn-primary' onClick={clicked2}>Convert to Lower case</button>
+        <p>Count of Words : {text.split(" ").length } & Count of Characters : {text.length}</p>
+        <p>{text}</p>
     </>
   );
 }
