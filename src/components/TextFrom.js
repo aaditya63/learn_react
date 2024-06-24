@@ -55,9 +55,29 @@ export default function TextFrom(props) {
         updateem("0 Found");
         updateli("0 Found");
     }
+    const changedark = ()=>{
+        if(askfordark == "Switch to Dark Mode"){
+            const body = document.querySelector("body");
+            body.style.backgroundColor = "black"
+            body.style.color = "white"
+            updateask("Switch to Light Mode")
+        }
+        else{
+            const body = document.querySelector("body");
+            body.style.backgroundColor = "white"
+            body.style.color = "black"
+            updateask("Switch to Dark Mode")
+        }
+    }
+
+
     let [text,setText] = useState("");
     let [em,updateem] = useState("0 Found");
     let [li,updateli] = useState("0 Found");
+    let [askfordark,updateask] = useState ("Switch to Dark Mode");
+
+    
+
     return (
     <>
         <h1>{props.heading}</h1>
@@ -69,6 +89,7 @@ export default function TextFrom(props) {
         <button className='btn btn-primary mx-1' onClick={clicked2}>Convert to Lower case</button>
         <button className='btn btn-primary mx-1' onClick={fetchemail}>Extract Data</button>
         <button className='btn btn-primary mx-1' onClick={clearfunc}>Clear Data</button>
+        <button className='btn btn-primary mx-1' onClick={changedark} >{askfordark}</button>
         <br />
         <p>Count of Words : {text.split(" ").length } & Count of Characters : {text.length}</p>
         <h3>All Links</h3>

@@ -1,6 +1,7 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import TextFrom from './components/TextFrom';
+import About from './components/About';
 function App() {
   return (
     <>
