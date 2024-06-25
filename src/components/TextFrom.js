@@ -55,47 +55,33 @@ export default function TextFrom(props) {
         updateem("0 Found");
         updateli("0 Found");
     }
-    const changedark = ()=>{
-        if(askfordark == "Switch to Dark Mode"){
-            const body = document.querySelector("body");
-            body.style.backgroundColor = "black"
-            body.style.color = "white"
-            updateask("Switch to Light Mode")
-        }
-        else{
-            const body = document.querySelector("body");
-            body.style.backgroundColor = "white"
-            body.style.color = "black"
-            updateask("Switch to Dark Mode")
-        }
-    }
 
 
     let [text,setText] = useState("");
     let [em,updateem] = useState("0 Found");
     let [li,updateli] = useState("0 Found");
-    let [askfordark,updateask] = useState ("Switch to Dark Mode");
 
     
 
     return (
     <>
+        <div style={{backgroundColor:`${props.isblack == true ? "black":"white"}`}}>
         <h1>{props.heading}</h1>
         <div className="mb-3">
             <label htmlFor="MyTextBox" className="form-label">{props.subheading}</label>
-            <textarea  placeholder="Enter Any String to Convert into Capital letters" className="form-control" onChange={onchangefunc} value={text} id="Text Box" rows="5"></textarea>
+            <textarea  placeholder="Enter Any String to Convert into Capital letters" className="form-control" onChange={onchangefunc} value={text} id="Text Box" rows="5" style={{backgroundColor:`${props.isblack == true ? "black":"white"}`}}   ></textarea>
         </div>
         <button className='btn btn-primary mx-1' onClick={clicked}>Convert to upper case</button>
         <button className='btn btn-primary mx-1' onClick={clicked2}>Convert to Lower case</button>
         <button className='btn btn-primary mx-1' onClick={fetchemail}>Extract Data</button>
         <button className='btn btn-primary mx-1' onClick={clearfunc}>Clear Data</button>
-        <button className='btn btn-primary mx-1' onClick={changedark} >{askfordark}</button>
         <br />
         <p>Count of Words : {text.split(" ").length } & Count of Characters : {text.length}</p>
         <h3>All Links</h3>
         <p>{li}</p>
         <h3>All Emails</h3>
         <p>{em}</p>
+        </div>
     </>
   );
 }

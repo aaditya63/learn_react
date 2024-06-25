@@ -17,6 +17,12 @@ export default function Navbar(props) {
             <li className="nav-item">
               <a className="nav-link" href="/">{props.aboutText}</a>
             </li>
+            <li className='mx-3'>
+              <div className="form-check form-switch" style={{paddingTop:"8px"}}>
+                <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onChange={props.changeblack}/>
+                <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{props.isblack == true ? "Switch to Light Mode":"Switch to Dark Mode"}</label>
+              </div>
+            </li>
           </ul>
           <form className="d-flex" role="search">
             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
