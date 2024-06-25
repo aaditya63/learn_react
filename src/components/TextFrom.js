@@ -49,6 +49,7 @@ export default function TextFrom(props) {
                 updateli(`${item}`);
             else updateli(`${li}, ${item}`);
         })
+        props.alertfunc("Note","Emails and Links are extracted");
     }
     const clearfunc = ()=>{
         setText("");
