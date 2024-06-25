@@ -22,23 +22,24 @@ function App() {
   }
   let [alerttxt,setalert] = useState(null);     //Initialize with null
 
-  const alertfunc = (message,type) =>{
+  const alertfunc = (type,message) =>{
     setalert({            //Using State as an object
+      type : type,
       msg : message,
-      type : type
     });
     console.log(alerttxt);
+    setTimeout(()=>{
+      setalert(null);
+    },4000);
   }
-
 
   return (
     <>
     <Navbar title="Aaditya" aboutText ="asdfasdfasd" isblack = {isblack} changeblack = {changeblack}/>
-    <Alert alerttxt = {alerttxt}/>
+    <Alert alerttxt = {alerttxt} setalert = {setalert}/>
     <div className="container">
       <TextFrom heading="This is New form" subheading="Form is just made for you!" isblack = {isblack} alertfunc = {alertfunc}/>
     </div>
-
     </>
   );
 }

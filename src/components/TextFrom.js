@@ -4,7 +4,8 @@ import React,{useState} from 'react'
 
 export default function TextFrom(props) {
     const clicked = ()=>{
-        console.log("button is clicked");
+        if(text.length < 1)
+            props.alertfunc("warning","Text Field is Empty!");
         setText(text.toUpperCase());
     }
     const onchangefunc = (e)=>{
@@ -12,6 +13,8 @@ export default function TextFrom(props) {
         setText(e.target.value);
     }
     const clicked2 = ()=>{
+        if(text.length < 1)
+            props.alertfunc("warning","Text Field is Empty!");
         setText(text.toLowerCase());
     }
     const fetchemail = ()=>{
@@ -49,12 +52,13 @@ export default function TextFrom(props) {
                 updateli(`${item}`);
             else updateli(`${li}, ${item}`);
         })
-        props.alertfunc("Note","Emails and Links are extracted");
+        props.alertfunc("success","Emails and Links are extracted");
     }
     const clearfunc = ()=>{
         setText("");
         updateem("0 Found");
         updateli("0 Found");
+        props.alertfunc("success","Data Clered");
     }
 
 
