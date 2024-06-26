@@ -4,12 +4,12 @@ import Navbar from './components/Navbar';
 import TextFrom from './components/TextFrom';
 import Alert from './components/Alert';
 import About from './components/About';
-import {BrowserRouter,Routes,Route,Link} from "react-router-dom";
+import {BrowserRouter,Routes,Route} from "react-router-dom";
 function App() {
   const body = document.querySelector("body");
   let [isblack,setblack] = useState(false);
   const changeblack = ()=>{
-    if(isblack == true){
+    if(isblack === true){
       setblack(false);
       console.log("OFF");
       body.style.backgroundColor = "white";
