@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import {BrowserRouter as Router,Link} from "react-router-dom";
 
 // console.log(useState("Here is new text"));
 
@@ -66,10 +67,18 @@ export default function TextFrom(props) {
     let [em,updateem] = useState("0 Found");
     let [li,updateli] = useState("0 Found");
 
-    
+    function funcupdate(){
+        let a = text.split(" ");
+        let count = 0;
+        for(let item of a){
+            if(item.length > 0)
+                count++;
+        }
+        return count;
+    }
 
     return (
-    <>
+    <>  
         <div style={{backgroundColor:`${props.isblack == true ? "black":"white"}`}}>
         <h1>{props.heading}</h1>
         <div className="mb-3">
@@ -81,7 +90,7 @@ export default function TextFrom(props) {
         <button className='btn btn-primary mx-1' onClick={fetchemail}>Extract Data</button>
         <button className='btn btn-primary mx-1' onClick={clearfunc}>Clear Data</button>
         <br />
-        <p>Count of Words : {text.split(" ").length } & Count of Characters : {text.length}</p>
+        <p>Count of Words : {funcupdate()} & Count of Characters : {text.length}</p>
         <h3>All Links</h3>
         <p>{li}</p>
         <h3>All Emails</h3>

@@ -3,6 +3,8 @@ import { useState } from 'react';
 import Navbar from './components/Navbar';
 import TextFrom from './components/TextFrom';
 import Alert from './components/Alert';
+import About from './components/About';
+import {BrowserRouter,Routes,Route,Link} from "react-router-dom";
 function App() {
   const body = document.querySelector("body");
   let [isblack,setblack] = useState(false);
@@ -20,7 +22,7 @@ function App() {
       body.style.color = "White";
     }
   }
-  let [alerttxt,setalert] = useState(null);     //Initialize with null
+  let [alerttxt,setalert] = useState(null);    
 
   const alertfunc = (type,message) =>{
     setalert({            //Using State as an object
@@ -35,11 +37,21 @@ function App() {
 
   return (
     <>
-    <Navbar title="Aaditya" aboutText ="asdfasdfasd" isblack = {isblack} changeblack = {changeblack}/>
-    <Alert alerttxt = {alerttxt} setalert = {setalert}/>
-    <div className="container">
-      <TextFrom heading="This is New form" subheading="Form is just made for you!" isblack = {isblack} alertfunc = {alertfunc}/>
-    </div>
+      <BrowserRouter>
+      <Navbar title="TextUtils" aboutText ="About" isblack = {isblack} changeblack = {changeblack}/>
+      <Alert alerttxt = {alerttxt} setalert = {setalert}/>
+      <Routes>
+      <Route path='/' element={
+        <TextFrom heading="This is New form" subheading="Form is just made for you!" isblack = {isblack} alertfunc = {alertfunc}/>
+      }/>
+      <Route path='/About' element={
+        <div className="container">
+        <About/>
+        </div>
+      }> 
+      </Route>
+      </Routes>
+    </BrowserRouter>
     </>
   );
 }
