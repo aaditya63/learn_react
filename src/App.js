@@ -4,7 +4,6 @@ import Navbar from './components/Navbar';
 import TextFrom from './components/TextFrom';
 import Alert from './components/Alert';
 import About from './components/About';
-import {BrowserRouter,Routes,Route} from "react-router-dom";
 function App() {
   const body = document.querySelector("body");
   let [isblack,setblack] = useState(false);
@@ -25,7 +24,7 @@ function App() {
   let [alerttxt,setalert] = useState(null);    
 
   const alertfunc = (type,message) =>{
-    setalert({            //Using State as an object
+    setalert({            
       type : type,
       msg : message,
     });
@@ -37,21 +36,13 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
       <Navbar title="TextUtils" aboutText ="About" isblack = {isblack} changeblack = {changeblack}/>
       <Alert alerttxt = {alerttxt} setalert = {setalert}/>
-      <Routes>
-      <Route path='/' element={
-        <TextFrom heading="This is New form" subheading="Form is just made for you!" isblack = {isblack} alertfunc = {alertfunc}/>
-      }/>
-      <Route path='/About' element={
+      
+      <TextFrom heading="This is New form" subheading="Form is just made for you!" isblack = {isblack} alertfunc = {alertfunc}/>
         <div className="container">
         <About/>
         </div>
-      }> 
-      </Route>
-      </Routes>
-    </BrowserRouter>
     </>
   );
 }
